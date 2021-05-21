@@ -13,7 +13,6 @@ contract Greeting {
       Part[] originFees;
   }
 
-  string public greet = "Hello";
   bytes public encoded;
 
   // constructor() public {
@@ -23,11 +22,11 @@ contract Greeting {
       return encoded;
   }
 
-  function sayHello() external view returns(string memory) {
-    return greet;
+  function sayEncode() external view returns(bytes memory){
+    return encoded;
   }
 
-  function setGreen(string calldata _new_greet) external {
-    greet = _new_greet;
-  }
+  function decodeDataV1(bytes memory data) internal pure returns (DataV1 memory orderData) {
+        orderData = abi.decode(data, (DataV1));
+    }
 }
